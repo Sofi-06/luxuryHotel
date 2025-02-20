@@ -73,5 +73,5 @@ public class UsuarioEntity {
     //lazy-conexión perezosa, en EAGER- trae todo lo que encuentra
     @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private RolEntity idRol;
+    private RolEntity rol;
 }

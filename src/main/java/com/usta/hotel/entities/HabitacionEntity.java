@@ -46,6 +46,6 @@ public class HabitacionEntity implements Serializable {
     @Column(name = "capacidad", nullable = false)
     private Integer capacidad;
 
-    @ManyToMany(mappedBy = "HABITACIONES")
+    @ManyToMany(mappedBy = "habitaciones")
     private Set<ReservaEntity> reservas;
 }
