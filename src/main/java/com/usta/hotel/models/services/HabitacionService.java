@@ -9,7 +9,7 @@ public interface HabitacionService {
 
     public void save(HabitacionEntity habitacion);
 
-    public HabitacionEntity findById(int id);
+    public HabitacionEntity findById(Long id);
 
     public void deleteById(Long id);
 
