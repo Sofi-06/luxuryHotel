@@ -10,7 +10,7 @@ public interface ReservaService {
 
     public void save(ReservaEntity reserva);
 
-    public ReservaEntity findById(int id);
+    public ReservaEntity findById(Long id);
 
     public void deleteById(Long id);
 

@@ -11,11 +11,10 @@ public interface RolService {
 
     public void save(RolEntity rol);
 
-    public RolEntity findById(int id);
+    public RolEntity findById(Long id);
 
     public void deleteById(Long id);
 
     public RolEntity actualizarRol(RolEntity rol);
 
-    public RolEntity viewDetail(Long id);
 }
