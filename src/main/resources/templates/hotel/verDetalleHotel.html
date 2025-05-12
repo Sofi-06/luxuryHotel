@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout :: head}"></head>
+
+<body class="bg-stone-800 min-h-screen flex flex-col mb-22"
+      th:style="'background-image: url('+@{/images/hotel1.jpg}+');background-size: cover;
+      background-position: center; backdrop-filter:blur(1px)'">
+
+<header th:replace="~{layout/layout :: header}"></header>
+<section class="bg-stone-300 text-stone-900 py-8 mt-20">
+    <section class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold font-serif text-slate-700 mb-6">Luxury Hotel</h1>
+        <p class="mt-4 text-lg max-w-3xl mx-auto">
+            Enjoy an unforgettable stay at our 5-start hotel,
+            where exclusive services and total comfort await for you.</p>
+
+        <div class="mt-6 mb-10 max-w-6xl mx-auto">
+            <!--     Swiper: clase para utilizar carruseles-->
+            <div class="swiper mySwiper rounded-xl shadow-lg">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <img src="/images/hotel4.jpg" alt="hotel" class="w-full h-48 object-cover rounded-xl">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/hotel3.jpg" alt="hotel" class="w-full h-48 object-cover rounded-xl">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/hotel2.jpg" alt="hotel" class="w-full h-48 object-cover rounded-xl">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/hotel1.jpg" alt="hotel" class="w-full h-48 object-cover rounded-xl">
+                    </div>
+
+                </div>
+                <!-- navegacion -->
+                <div class="swiper-button-prev flex items-center justify-center w-10 h-10 rounded-full
+                      border border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white text-xl font-bold shadow transition-all">
+
+                </div>
+
+                <div class="swiper-button-next flex items-center justify-center w-10 h-10 rounded-full
+                      border border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white text-xl font-bold shadow transition-all">
+
+                </div>
+
+                <div class="swiper-pagination mt-30 flex justify-center"></div>
+            </div>
+
+        </div>
+    </section>
+    <div class="h-1 bg-slate-800 shadow-md rounded-full my-10 w-3/4 mx-auto"></div>
+    <!--    ubicacion,contacto y horarios clave-->
+    <section class="py-4 px-6 md:px-20">
+        <div class="grid md:grid-cols-3 gap-6 items-start">
+        <div>
+            <h2 class="text-2xl font-bold mb-4 text-stone-800">Location & Contact</h2>
+            <div class="space-y-2 text-stone-800">
+                <p><strong>Address: </strong>Calle 123 # 45-67, Bogotá, Colombia</p>
+                <p><strong>Phone: </strong>+57 318 863 0045</p>
+                <p><strong>Email: </strong>contacto@luxuryHotel.com</p>
+                <p class="mt-2 flex gap-4 text-2xl">
+                    <a href="#" class="text-blue-600 hover:text:blue-800"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#" class="text-pink-500 hover:text:pink-600"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/573188630045" class="text-green-600 hover:text:green-800"><i
+                            class="fab fa-whatsapp"></i></a>
+                </p>
+            </div>
+        </div>
+
+        <!-- horarios-->
+        <div>
+            <h2 class="text-2xl font-bold mb-4 text-stone-800">Important Hours</h2>
+            <div class="bg-stone-900 text-stone-100 shadow-lg rounded-xl overflow-hidden
+                        border border-amber-600">
+                <table class="w-full table-auto text-left">
+                    <thead>
+                    <tr class="bg-amber-700 text-white">
+                        <th class="p-3 font-semibold">Item</th>
+                        <th class="p-3 font-semibold">Schedule</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-amber-800/50 transition-all">
+                            <td class="px-4 py-2 border-t border-amber-800">Check in</td>
+                            <td class="px-4 py-2 border-t border-amber-800">From 3:00 pm</td>
+                        </tr>
+                        <tr class="hover:bg-amber-800/50 transition-all">
+                            <td class="px-4 py-2 border-t border-amber-800">Check out</td>
+                            <td class="px-4 py-2 border-t border-amber-800">Until 12:00 pm</td>
+                        </tr>
+                        <tr class="hover:bg-amber-800/50 transition-all">
+                            <td class="px-4 py-2 border-t border-amber-800">Reception</td>
+                            <td class="px-4 py-2 border-t border-amber-800">24 hours</td>
+                        </tr>
+                        <tr class="hover:bg-amber-800/50 transition-all">
+                            <td class="px-4 py-2 border-t border-amber-800">Breakfast</td>
+                            <td class="px-4 py-2 border-t border-amber-800">7:00 am to 10:00 am</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            <!--Mapa-->
+            <div>
+                <h2 class="text-2xl font-bold mb-4 text-stone-800">Find us</h2>
+                <div class="rounded-lg overflow-hidden shadow-lg border border-stone-300">
+                    <iframe class="w-full h-52"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d369.1887436815355!2d-73.35552549294341!3d5.548418378367235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a7df0d91a2633%3A0x8e879d86dc7fbf9a!2sFrisgril!5e0!3m2!1ses!2sco!4v1745506920876!5m2!1ses!2sco" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Servicios-->
+    <div class="h-1 bg-slate-800 shadow-md rounded-full my-10 w-3/4 mx-auto"></div>
+    <section>
+        <h2 class="text-2xl font-bold mb-4 text-center">Services and Aminities</h2>
+        <div class="grid md:grid-cols-3 gap-4 text-center">
+            <div><i class="fas fa-bed text-2xl text-slate-600"></i><p>Comfortable room</p></div>
+            <div><i class="fas fa-coffee text-2xl text-slate-600"></i><p>Breakfast included</p></div>
+            <div><i class="fas fa-parking text-2xl text-slate-600"></i><p>Free parking</p></div>
+            <div><i class="fas fa-wifi text-2xl text-slate-600"></i><p>Wifi</p></div>
+            <div><i class="fas fa-swimmer text-2xl text-slate-600"></i><p>Swimming pool</p></div>
+            <div><i class="fas fa-dog text-2xl text-slate-600"></i><p>Pet friendly</p></div>
+            <div><i class="fas fa-tshirt text-2xl text-slate-600"></i><p>Laundry services</p></div>
+            <div><i class="fas fa-concierge-bell text-2xl text-slate-600"></i><p>Room services</p></div>
+            <div><i class="fas fa-shuttle-van text-2xl text-slate-600"></i><p>Airport shuttle</p></div>
+        </div>
+    </section>
+
+    <!--Politicas generales--->
+    <div class="h-1 bg-slate-800 shadow-md rounded-full my-10 w-3/4 mx-auto"></div>
+    <section class="text-center px-4 md:px-0">
+        <h2 class="text-2xl font-bold mb-2">General Policies</h2>
+        <ul class="list-disc list-inside space-y-1 inline-block text-left">
+            <li><strong>Cancellation:</strong>Free cancellation up 24 hours before check-in</li>
+            <li><strong>Pets:</strong>Small oets are allowed under supervision</li>
+            <li><strong>Payments</strong>We accept credit card, debit card, nd bank transfers</li>
+        </ul>
+    </section>
+</section>
+<footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+<script>
+    const swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        },
+        breakpoints: {
+            768: {slidesPerView: 2,},
+            1024: {slidesPerView: 3,}
+        },
+
+    });
+</script>
+</html>

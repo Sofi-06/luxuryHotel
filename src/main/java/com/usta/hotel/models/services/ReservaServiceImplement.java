@@ -1,5 +1,6 @@
 package com.usta.hotel.models.services;
 
+import com.usta.hotel.entities.HabitacionEntity;
 import com.usta.hotel.entities.ReservaEntity;
 import com.usta.hotel.models.dao.HabitacionDAO;
 import com.usta.hotel.models.dao.ReservaDAO;
@@ -50,4 +51,12 @@ public class ReservaServiceImplement implements ReservaService {
     public ReservaEntity viewDetail(Long id) {
         return reservaDAO.viewDetail(id);
     }
+
+    @Override
+    @Transactional
+    public List<ReservaEntity> findByHab(HabitacionEntity habitacion) {
+        return reservaDAO.findByHab(habitacion);
+    }
+
+
 }

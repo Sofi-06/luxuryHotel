@@ -46,6 +46,27 @@ public class HabitacionEntity implements Serializable {
     @Column(name = "capacidad", nullable = false)
     private Integer capacidad;
 
+    public  Boolean getDisponibilidad() {return disponibilidad;}
+
+    public Long getIdHabitacion() {return idHabitacion;}
+
+    public void setDisponibilidad(Boolean disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+
+    public String getTipoHab() {return tipoHab;}
+    public String getFotoHab() {return fotoHab;}
+    public Integer getCapacidad() {return capacidad;}
+    public BigDecimal getPrecioHab() {return precioHab;}
+
+    public void setFotoHab(String fotoHab) {
+        this.fotoHab = fotoHab;
+    }
+
+    public void setCapacidad(Integer capacidad) {this.capacidad = capacidad;}
+    public void setPrecioHab(BigDecimal precioHab) {this.precioHab = precioHab;}
+    public void setTipoHab(String tipoHab) {this.tipoHab = tipoHab;}
+
     @ManyToMany(mappedBy = "habitaciones")
     private Set<ReservaEntity> reservas;
 }
