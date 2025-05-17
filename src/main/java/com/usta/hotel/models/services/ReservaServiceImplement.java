@@ -58,5 +58,9 @@ public class ReservaServiceImplement implements ReservaService {
         return reservaDAO.findByHab(habitacion);
     }
 
+    @Override
+    public List<ReservaEntity> findAllOrderByFechaIniDesc(){
+        return reservaDAO.findAllOrderByFechaIniDesc();
+    }
 
 }

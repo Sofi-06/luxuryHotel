@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+
 @Controller
 public class ReservaController {
 
@@ -20,16 +22,9 @@ public class ReservaController {
     private ReservaService reservaService;
 
     @GetMapping("/reservar/{id}")
-    public String reservarHabitacion(@PathVariable Long id, Model model) {
-        HabitacionEntity habitacion = habitacionService.findById(id);
-        System.out.println("Habitacion encontrada: " + habitacion);
-        if (habitacion == null || !habitacion.getDisponibilidad()) {
-            model.addAttribute("error", "This room is no longer available");
-            return "redirect:/habitacion";
-        }
+    public String listarReserva(Model model) {
 
-        model.addAttribute("habitacion", habitacion);
-        model.addAttribute("reserva", new ReservaEntity());
-        return "reservas/realizarReserva";
+        List<ReservaEntity> reservas = reservaService.findAll();
+
     }
 }

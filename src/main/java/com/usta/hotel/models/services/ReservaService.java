@@ -19,4 +19,6 @@ public interface ReservaService {
     public ReservaEntity viewDetail(Long id);
 
     public List<ReservaEntity> findByHab(HabitacionEntity habitacion);
+
+    public List<ReservaEntity> findAllOrderByFechaIniDesc();
 }

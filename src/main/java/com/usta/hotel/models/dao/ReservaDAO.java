@@ -18,5 +18,9 @@ public interface ReservaDAO extends CrudRepository<ReservaEntity, Long> {
     @Query("SELECT r FROM ReservaEntity r JOIN r.habitaciones h WHERE h = :habitacion")
     public List<ReservaEntity> findByHab(@Param("habitacion") HabitacionEntity habitacion);
 
+    @Transactional
+    @Query("SELECT r FROM ReservaEntity r ORDER BY r.fechaIni DESC")
+    List<ReservaEntity> findAllOrderByFechaIniDesc();
+
 
 }

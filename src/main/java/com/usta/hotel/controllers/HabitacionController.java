@@ -18,15 +18,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.Closeable;
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 @Controller
@@ -147,6 +145,41 @@ public class HabitacionController {
         }
         return null;
 
+    }
+
+    /*--------------------------------------------------------------------------------------------------*/
+
+    @GetMapping(value = "/editarHabitacion/{id}")
+    public String editarHabitacion(Model model, @PathVariable(value = "id") Long idHabitacion) {
+        HabitacionEntity habitacion = habitacionService.findById(idHabitacion);
+        model.addAttribute("title", "Edit Room");
+        model.addAttribute("habitacionEdit", habitacion);
+        model.addAttribute("imagen", habitacion.getFotoHab());
+        return "habitaciones/editarRoom";
+    }
+
+    /*--------------------------------------------------------------------------------------------------*/
+    @PostMapping(value = "/editarHabitacion/{id}")
+    public String editHab(@ModelAttribute("habitacionEdit") HabitacionEntity habitacion, @PathVariable(value = "id") Long idHabitacion, RedirectAttributes redirectAttributes,
+                          @RequestParam(value = "foto") MultipartFile foto,
+                          @RequestParam(value = "imagenAnterior") String imagenAnterior,
+                          BindingResult result) throws IOException {
+        HabitacionEntity habitacionAux = habitacionService.findById(idHabitacion);
+        habitacionAux.setIdHabitacion(idHabitacion);
+        habitacionAux.setCapacidad(habitacion.getCapacidad());
+        habitacionAux.setDisponibilidad(habitacion.getDisponibilidad());
+        habitacionAux.setPrecioHab(habitacion.getPrecioHab());
+        habitacionAux.setTipoHab(habitacion.getTipoHab());
+
+        String nombreImagen= guardarImagen(foto);
+        if (nombreImagen == null || nombreImagen.isBlank()) {
+            habitacionAux.setFotoHab(imagenAnterior);
+        }else {
+            habitacionAux.setFotoHab(nombreImagen);
+        }
+        habitacionService.actualizarHabitacion(habitacionAux);
+        redirectAttributes.addFlashAttribute("success", "Room Updated successfully");
+        return "redirect:/habitacion";
     }
 
 }
