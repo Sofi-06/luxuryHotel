@@ -1,0 +1,35 @@
+table {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    text-align: center;
+    border-color: white;
+
+}
+
+tbody tr:nth-child(even) {
+    background-color: #beeaf2;
+
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+
+}
+
+tbody tr:hover {
+    background-color: #ccd4e3 !important;
+    color: #042434 !important;
+}
+
+th{
+    background-color: #fef3c7;
+    color: black;
+    font-size: large;
+}
+
+th,td{
+    border: 1px solid #042434;
+    text-align: center;
+    vert-align: middle;
+}

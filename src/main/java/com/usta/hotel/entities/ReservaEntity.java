@@ -63,4 +63,6 @@ public class ReservaEntity implements Serializable {
             referencedColumnName = "id_reserva"),
             inverseJoinColumns = @JoinColumn(name = "id_habitacion", referencedColumnName = "id_habitacion"))
     private Collection<HabitacionEntity> habitaciones = new ArrayList<>();
+
+
 }
