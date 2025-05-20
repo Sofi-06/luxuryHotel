@@ -46,6 +46,30 @@
              <td class=" px-6 py-4 font-medium text-stone-900 whitespace-nowrap">
                  <span th:text="${reserva.idReserva}"></span>
              </td>
+            <td class="px-6 py-4">
+                <span th:text="${reserva.usuario.nombreUsu + ' '+ reserva.usuario.apellidoUsu}"></span>
+            </td>
+             <td class="px-6 py-4">
+                 <span th:text="${reserva.fechaIni}"> </span>
+             </td>
+             <td class="px-6 py-4">
+                 <span th:text="${reserva.fechaFin}"> </span>
+             </td>
+             <td class="px-6 py-4">
+                 <span th:text="${reserva.estadoRes}"> </span>
+             </td>
+             <td class="px-6 py-4">
+                 <ul class="list-none pl-0">
+                 <li th:each="hab: ${reserva.habitaciones}" th:text="${hab.idHabitacion}"> </li>
+                 </ul>
+             </td>
+                <td class="px-6 py-4">
+                    <span th:if="${ reserva.estadoRes == 'Cancelada'}">Canceled</span>
+                    <span th:if="${ reserva.estadoRes != 'Cancelada' and reserva.fechaFin.isBefore(T(java.time.LocalDate).now())}">Expired</span>
+                    <span th:if="${reserva.estadoRes !='Cancelada' and !reserva.fechaIni.isAfter(T(java.time.LocalDate).now()) and
+    !reserva.fechaFin.isBefore(T(java.time.LocalDate).now())}"> Active</span>
+                    <span th:if="${reserva.estadoRes != 'Cancelada' and reserva.fechaIni.isAfter(T(java.time.LocalDate).now())}">Upcoming</span>
+                </td>
             </tbody>
         </table>
     </div>

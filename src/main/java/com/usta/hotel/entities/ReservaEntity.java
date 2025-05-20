@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -31,13 +32,13 @@ public class ReservaEntity implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_ini", nullable = false)
-    private Date fechaIni;
+    private LocalDate fechaIni;
 
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_fin", nullable = false)
-    private Date fechaFin;
+    private LocalDate fechaFin;
 
     @NotNull
     @Size(min = 1, max = 20)
@@ -53,7 +54,7 @@ public class ReservaEntity implements Serializable {
     @JoinColumn(name = "cedula", referencedColumnName = "cedula")
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private UsuarioEntity cedula;
+    private UsuarioEntity usuario;
 
     //conexión con Habitaciones para crear tabla de rompimiento
     //no se genera campo, es la tabla de rompimiento
