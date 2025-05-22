@@ -32,4 +32,10 @@ public class ReservaController {
         model.addAttribute("hoy", hoy);
         return "reservas/listarReservas";
     }
+
+    @GetMapping("/reservas/cancelar/{id}")
+    public String cancelarReserva(@PathVariable ("id") Long id) {
+        reservaService.cancelarReserva(id);
+        return "redirect:/reserva";
+    }
 }

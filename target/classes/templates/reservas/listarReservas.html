@@ -70,9 +70,47 @@
     !reserva.fechaFin.isBefore(T(java.time.LocalDate).now())}"> Active</span>
                     <span th:if="${reserva.estadoRes != 'Cancelada' and reserva.fechaIni.isAfter(T(java.time.LocalDate).now())}">Upcoming</span>
                 </td>
+            <td class="px-6 py-4 text-center">
+                <a th:if="${reserva.estadoRes != 'Cancelada' and (reserva.fechaIni.isAfter(T(java.time.LocalDate).now())) or (!reserva.fechaIni.isAfter(T(java.time.LocalDate).now())) and (!reserva.fechaFin.isBefore(T(java.time.LocalDate).now()))}"
+                th:href="@{'/reservas/editarRes/' + ${reserva.idReserva}}"
+                class="text-orange-600 hover:text-orange-800" title="Edit Reservation">
+                    <i class="fas fa-pen"></i>
+                </a>
+                <button type="button" th:if="${reserva.estadoRes != 'Cancelada' and reserva.fechaIni.isAfter(hoy)}"
+                th:attr="data-id=${reserva.idReserva}"
+                class="text-red-600 hover:text-red-800 cancelar-btn"
+                title="Cancel Reservation">
+                    <i class="fas fa-times-circle"> </i>
+                </button>
+            </td>
             </tbody>
         </table>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function (){
+        const botonesCancelar = document.querySelectorAll('.cancelar-btn');
+        botonesCancelar.forEach(boton=>{
+            boton.addEventListener('click', function (){
+                const reservaId= this.getAttribute('data-id');
+                Swal.fire({
+                    title: ' ¿Cancel the reservation ?',
+                    text: 'This action cannot be undone',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, cancel',
+                    cancelButtonText: 'No, return'
+                }).then((result)=>{
+                    if (result.isConfirmed){
+                        window.location.href='/reservas/cancelar/' + reservaId;
+                    }
+                });
+            });
+        });
+    });
+</script>
 </body>
 </html>

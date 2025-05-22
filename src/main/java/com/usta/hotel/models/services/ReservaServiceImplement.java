@@ -63,4 +63,15 @@ public class ReservaServiceImplement implements ReservaService {
         return reservaDAO.findAllOrderByFechaIniDesc();
     }
 
+    @Override
+    @Transactional
+    public void cancelarReserva(Long id) {
+        ReservaEntity reserva = reservaDAO.findById(id).orElseThrow();
+        reserva.setEstadoRes("Cancelada");
+        for (HabitacionEntity habitacion : reserva.getHabitaciones()) {
+            habitacion.setDisponibilidad(true);
+        }
+        reservaDAO.save(reserva);
+    }
+
 }

@@ -21,4 +21,6 @@ public interface ReservaService {
     public List<ReservaEntity> findByHab(HabitacionEntity habitacion);
 
     public List<ReservaEntity> findAllOrderByFechaIniDesc();
+
+    public void cancelarReserva(Long id);
 }
