@@ -26,9 +26,9 @@ public class RolEntity implements Serializable {
     private String rol;
 
     //va a manejar parte de seguridad y no se llena en los formularios
-    public RolEntity(String Rol) {
+    public RolEntity(String rol) {
         super();
-        this.rol = Rol;
+        this.rol = rol;
     }
 
     public RolEntity() {

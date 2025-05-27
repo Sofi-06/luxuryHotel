@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="www.thymeleaf.org">
+<html lang="es" xmlns:th="www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +32,8 @@
             <span class="text-lg font-serif text-gray-300 tracking-wide drop-shadow-sm"> Hotel </span>
         </div>
         <ul class="flex gap-8 text-lg font-medium items-center">
-            <li class="hover:text-gray-300 hover:underline transition-all underline-offset-4">
+            <li class="hover:text-gray-300 hover:underline transition-all underline-offset-4"
+            sec:authorize="hasAnyRole('ADMINISTRADOR', 'HUESPED')">
                 <a th:href="@{/habitacion}">Accomodations</a>
             </li>
             <li class="hover:text-gray-300 hover:underline transition-all underline-offset-4">
