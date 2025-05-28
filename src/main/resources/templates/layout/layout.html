@@ -36,24 +36,25 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
             sec:authorize="hasAnyRole('ADMINISTRADOR', 'HUESPED')">
                 <a th:href="@{/habitacion}">Accomodations</a>
             </li>
-            <li class="hover:text-gray-300 hover:underline transition-all underline-offset-4">
+            <li class="hover:text-gray-300 hover:underline transition-all underline-offset-4"
+            sec:authorize="hasRole('ADMINISTRADOR')">
                 <a th:href="@{/reserva}">Room Reservations</a>
             </li>
         </ul>
 
         <ul class="flex gap-6 items-center font-medium">
             <li class="border border-white text-white px-4 py-2 rounded-lg hover:bg-white
-            hover:text-gray-800 transition-all hover:scale-105 hover:ring-2 hover:ring-white">
+            hover:text-gray-800 transition-all hover:scale-105 hover:ring-2 hover:ring-white" sec:authorize="isAnonymous()">
                 <a th:href="@{/register}">Sign Up</a>
             </li>
 
             <li class="border border-white bg-white text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-200
-            transition-all hover:scale-105 hover:ring-2 hover:ring-white">
+            transition-all hover:scale-105 hover:ring-2 hover:ring-white" sec:authorize="isAnonymous()">
                 <a th:href="@{/login}">Sign In</a>
             </li>
 
             <li class="border border-white bg-white text-gray-800 px-4 py-2 rounded-lg hover:bg-amber-500
-            transition-all hover:text-white hover:scale-105 hover:ring-2 hover:ring-amber-400">
+            transition-all hover:text-white hover:scale-105 hover:ring-2 hover:ring-amber-400" sec:authorize="isAuthenticated()">
                 <form th:action="@{/logout}" method="post">
                        <a class="nav-link" onclick="this.parentNode.submit();" href="#">Log Out</a>
                 </form>
@@ -64,9 +65,10 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     </nav>
 </header>
 
-<div th:fragment="nuevo" class="absolute top-[70px] left-0 right-0 flex justify-between bg-yellow-500 py-4 px-20 w-screen h-[50px]">
+<div th:fragment="nuevo" class="absolute top-[70px] left-0 right-0 flex justify-between bg-yellow-500 py-4 px-20 w-screen h-[50px]"
+sec:authorize="hasRole('ADMINISTRADOR')">
     <ul class="w-full flex justify-end items-center">
-        <li class="flex gap-4 p-2 border border-white rounded-xl hover:bg-white hover:text-cyan-950 text-sm active:scale-105 trasnsition all">
+        <li class="flex gap-4 p-2 border border-white rounded-xl hover:bg-white hover:text-cyan-950 text-sm active:scale-105 trasnsition all" >
             <a th:href="@{${urlRegistro}}">Add New Record</a>
         </li>
     </ul>

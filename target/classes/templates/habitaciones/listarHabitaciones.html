@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{layout/layout :: head}">
 
 </head>
@@ -39,13 +39,13 @@ min-h-screen w-screen">
 
                     <div class="flex gap-2">
                         <a th:href="@{/editarHabitacion/}+${habitacion.idHabitacion}"
-                           class="flex-1 bg-amber-700 text-white text-center py-2 rounded-lg hover:bg-amber-500 transition all">
+                           class="flex-1 bg-amber-700 text-white text-center py-2 rounded-lg hover:bg-amber-500 transition all" sec:authorize="hasRole('ADMINISTRADOR')">
                             Edit
                         </a>
                         <form th:action="@{/eliminarHab/{id}(id=${habitacion.idHabitacion})}" method="post"
                               onsubmit="return confirmarEliminacion(event, this);">
                             <button type="submit"
-                                    class="bg-red-800 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all">
+                                    class="bg-red-800 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all" sec:authorize="hasRole('ADMINISTRADOR')">
                                 Delete
                             </button>
                         </form>

@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -65,7 +66,7 @@ public class UsuarioEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_reg", nullable = false)
-    private Date fechaReg;
+    private LocalDate fechaReg;
 
     //Relación con tabla de Roles
     @NotNull
